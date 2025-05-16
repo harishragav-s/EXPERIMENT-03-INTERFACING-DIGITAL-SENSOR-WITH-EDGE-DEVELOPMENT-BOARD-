@@ -2,10 +2,9 @@
  
 ---
 
-### **NAME:**  
-### **DEPARTMENT:**  
-### **ROLL NO:**  
-### **DATE OF EXPERIMENT:**  
+### **NAME: HARISH RAGAV S
+### **DEPARTMENT: CSE (IOT)
+### **ROLL NO: 212222110013
 
 ---
 
@@ -67,19 +66,35 @@ The sensor measures **temperature using a thermistor** and **humidity using a ca
 
 ## **PROGRAM (MicroPython)**  
 ``` ```
+```
+import dht
+import machine 
+import time
 
+# Define DHT22 sensor pin (GPIO XX -15)
+dht_pin = machine.Pin(15, machine.Pin.IN, machine.Pin.PULL_UP)
+sensor = dht.DHT22(dht_pin)
+
+while True:
+    try:
+        sensor.measure()
+        temp = sensor.temperature() # Get temperature in Celsius 
+        hum = sensor.humidity() # Get humidity
+        print(f"Temperature: {temp:.1f}°C")
+        print(f"Humidity: {hum:.1f}%")
+
+    except Exception as e:
+        print("Error reading sensor:", e)
+    time.sleep(2) # Wait for 2 seconds before next reading
 ---
-
+```
 ## **OUTPUT:**  
  
 ---
-
-  
+![Screenshot 2025-03-13 105734](https://github.com/user-attachments/assets/f0a9503a-7609-4d84-8d18-c184f1a110cd)
+![Screenshot 2025-03-13 110645](https://github.com/user-attachments/assets/cfdcec19-b0a6-4c2e-bcb2-c73b5c6ed737)
 ---
 
 ## **RESULT:**  
 The **DHT22 sensor** was successfully interfaced with the **Raspberry Pi Pico**, and real-time **temperature and humidity data** were read and displayed. The LEDs responded correctly when the threshold limits were exceeded.
 
----
-
- 
